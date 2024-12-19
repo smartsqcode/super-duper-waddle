@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup Links</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: black;
+            color: white;
+        }
+
+        form {
+            margin: 20px auto;
+            max-width: 400px;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Open Custom Link in Popup</h1>
+    <form onsubmit="openPopup(event)">
+        <input type="text" id="urlInput" placeholder="Enter your URL" required>
+        <button type="submit">Open Popup</button>
+    </form>
+
+    <script>
+        function openPopup(event) {
+            event.preventDefault();
+            const url = document.getElementById('urlInput').value;
+            if (url) {
+                const width = 800;
+                const height = 600;
+                const left = (screen.width - width) / 2;
+                const top = (screen.height - height) / 2;
+
+                window.open(
+                    url,
+                    '_blank',
+                    `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes,status=yes`
+                );
+            } else {
+                alert('Please enter a valid URL.');
+            }
+        }
+    </script>
+</body>
+</html>
